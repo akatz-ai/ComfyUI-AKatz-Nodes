@@ -1,0 +1,14 @@
+[project]
+name = "comfyui-akatz-nodes"
+description = "Simple custom node pack for nodes I use in my workflows. Includes Dilate Mask Linear for animating masks."
+version = "1.0.0"
+license = {file = "LICENSE"}
+
+[project.urls]
+Repository = "https://github.com/akatz-ai/ComfyUI-AKatz-Nodes"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "ComfyUI-AKatz-Nodes"
+Icon = ""
