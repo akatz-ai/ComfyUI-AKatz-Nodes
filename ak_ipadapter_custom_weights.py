@@ -70,7 +70,6 @@ class AK_IPAdapterCustomWeights:
     def weights_by_timings(self, weights='', frames=0, image=None, default_timing="ease_in_out"):
         # Parse the weights string
         weights_list = self.parse_weights_string(weights, default_timing)
-        print(f"weights_list: {weights_list}")
 
         # Interpolate weights based on parsed weights_list
         weights = self.interpolate_weights(weights_list, frames)
@@ -93,15 +92,13 @@ class AK_IPAdapterCustomWeights:
                 image_2 = image
             else:
                 change_frame_list = [weights_list[i][1] + weights_list[i][2] for i in range(len(weights_list))]
-                print(f"change_frame_list: {change_frame_list}")
-                cur_image_array = 0       # used for switching between image_1 and image_2 based on transitions
+                cur_image_array = 0   # used for switching between image_1 and image_2 based on transitions
                 cur_timing_index = 0  # used for incrementing through timings array
                 img_idx_1 = 0 # evens
                 img_idx_2 = 1 # odds
 
                 for i in range(frames):
                     if i == change_frame_list[cur_timing_index]:
-                        print(f"cur_timing_index: {cur_timing_index}, i: {i}, cur_image_array: {cur_image_array}")
                         cur_timing_index += 1 if cur_timing_index < len(change_frame_list) - 1 else 0
                         if cur_image_array == 0:
                             img_idx_1 += 2
@@ -115,16 +112,10 @@ class AK_IPAdapterCustomWeights:
                 image_1 = torch.stack(image_1)
                 image_2 = torch.stack(image_2)
 
-        print(f"image_1: {image_1}")
-        print(f"image_2: {image_2}")
-        
         # Find the maximum value in the list
         max_weight = max(weights)
 
         # Invert the weights relative to the maximum value
         weights_invert = [max_weight - weight for weight in weights]
-        print(f"weights: {weights}")
-        print(f"weights_invert: {weights_invert}")
         
-
         return (weights, weights_invert, image_1, image_2)
