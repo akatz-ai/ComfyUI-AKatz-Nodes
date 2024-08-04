@@ -1,7 +1,9 @@
 from .ak_animated_dilation_mask import AK_AnimatedDilationMaskLinear
+from .ak_ipadapter_custom_weights import AK_IPAdapterCustomWeights
 
 NODE_CONFIG = {
   "AK_AnimatedDilationMaskLinear": {"class": AK_AnimatedDilationMaskLinear, "name": "AK Dilate Mask Linear"},
+  "AK_IPAdapterCustomWeights": {"class": AK_IPAdapterCustomWeights, "name": "AK IPAdapter Custom Weights"},
 }
 
 def generate_node_mappings(node_config):
