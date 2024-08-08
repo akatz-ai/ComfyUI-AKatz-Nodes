@@ -17,6 +17,12 @@ class AK_IPAdapterCustomWeights:
     RETURN_NAMES = ("weights", "weights_invert", "image_1", "image_2")
     FUNCTION = "weights_by_timings"
     CATEGORY = "💜Akatz Nodes"
+    DESCRIPTION = """
+      Used to provide custom timings for crossfading multiple images using just two IPAdapters.
+      Text input should be a string of weights in the form: "(weight, start_frame, duration, interpolation_function),..."
+      E.g. "(1.0, 0, 24, linear), (0.5, 24, 12, ease_in), (0.0, 48, 24, ease_out)"
+      A default timing of "ease_in_out" is used if no interpolation function is specified.
+    """
 
     def parse_weights_string(self, weights_str, default_timing="ease_in_out"):
         # Convert the string to a list of tuples
