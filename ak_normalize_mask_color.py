@@ -45,11 +45,13 @@ class AK_NormalizeMaskColor:
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "clamp_black_and_white_video_custom_color"
     DESCRIPTION = """
-    # Animated Dilate Mask Linear
-    - mask: Input mask or mask batch
-    - shape: "circle" or "square", "circle" is most accurate to mask shape, "square" is fast to compute for testing purposes
-    - step: how much should the mask be dilated per frame
-    - delay: delay in frames before starting dilation
+    # AK Normalize Mask Color
+    Normalize the color of the mask to a specified color.
+    - image: The input video tensor with shape (num_frames, H, W, C).
+    - threshold: The threshold value for determining black pixels.
+    - r: Red channel value (0-255) for the non-black pixels.
+    - g: Green channel value (0-255) for the non-black pixels.
+    - b: Blue channel value (0-255) for the non-black pixels.
     """
     
     def clamp_black_and_white_video_custom_color(self, image: torch.Tensor, threshold: float, red: int, green: int, blue: int) -> torch.Tensor:

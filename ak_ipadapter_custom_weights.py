@@ -22,6 +22,10 @@ class AK_IPAdapterCustomWeights:
       Text input should be a string of weights in the form: "(weight, start_frame, duration, interpolation_function),..."
       E.g. "(1.0, 0, 24, linear), (0.5, 24, 12, ease_in), (0.0, 48, 24, ease_out)"
       A default timing of "ease_in_out" is used if no interpolation function is specified.
+      - weights: The weights and timings to be applied to the images
+      - default_timing: The default easing function to be used for transitions
+      - frames: The number of frames in the output
+      - image: The image batch to be crossfaded by the weights
     """
 
     def parse_weights_string(self, weights_str, default_timing="ease_in_out"):
