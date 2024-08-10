@@ -1,3 +1,10 @@
+"""
+@author: akatz
+@title: Akatz Custom Nodes
+@nickname: Akatz Custom Nodes
+@description: Custom node pack for nodes I use in my workflows. Includes Dilation mask nodes for animating subject masks.
+"""
+
 from .ak_animated_dilation_mask import AK_AnimatedDilationMaskLinear
 from .ak_ipadapter_custom_weights import AK_IPAdapterCustomWeights
 from .ak_normalize_mask_color import AK_NormalizeMaskColor
