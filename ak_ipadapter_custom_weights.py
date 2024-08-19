@@ -110,12 +110,13 @@ class AK_IPAdapterCustomWeights:
                 for i in range(frames):
                     if i == change_frame_list[cur_timing_index]:
                         cur_timing_index += 1 if cur_timing_index < len(change_frame_list) - 1 else 0
-                        if cur_image_array == 0:
-                            img_idx_1 += 2
-                            cur_image_array = 1
-                        else:
-                            img_idx_2 += 2
-                            cur_image_array = 0
+                        if i != 0: # don't change images on the first frame
+                            if cur_image_array == 0:
+                                img_idx_1 += 2
+                                cur_image_array = 1
+                            else:
+                                img_idx_2 += 2
+                                cur_image_array = 0
                     image_1.append(image[img_idx_1 % evens])
                     image_2.append(image[img_idx_2 % odds])
                 
