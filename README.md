@@ -19,6 +19,8 @@ Normalize the color of the mask to a specified color.
 
 ### AK IPAdapter Custom Weights
 
+[Node guide available here](https://cyber-damselfly-b6c.notion.site/AK-Custom-Weights-Node-1ee37dfbe1e54921acf587231968e94e)
+
 Used to provide custom timings for crossfading multiple images using just two IPAdapters.
 Text input should be a string of weights in the form: "(weight, start_frame, duration, interpolation_function),..."
 E.g. "(1.0, 0, 24, linear), (0.5, 24, 12, ease_in), (0.0, 48, 24, ease_out), ..."
