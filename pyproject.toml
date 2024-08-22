@@ -1,7 +1,7 @@
 [project]
 name = "comfyui-akatz-nodes"
 description = "Simple custom node pack for nodes I use in my workflows. Includes Dilate Mask Linear for animating masks."
-version = "1.3.1"
+version = "1.4.1"
 license = {file = "LICENSE"}
 
 [project.urls]
