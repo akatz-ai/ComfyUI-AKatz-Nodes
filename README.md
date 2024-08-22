@@ -10,7 +10,7 @@ Dilates a mask in a linear animated fashion given a mask batch.
 
 ### AK Audioreactive Dynamic Dilation Mask
 
-[Node guide available here](https://cyber-damselfly-b6c.notion.site/AK-Audioreactive-Dynamic-Dilation-Mask-Node-815e086d428f46e0ad1da8b73f3fa38f))
+[Node guide available here](https://cyber-damselfly-b6c.notion.site/AK-Audioreactive-Dynamic-Dilation-Mask-Node-815e086d428f46e0ad1da8b73f3fa38f)
 
 Dynamically dilates a mask based on audio amplitude, ideal for audio-reactive visualizations.
 
