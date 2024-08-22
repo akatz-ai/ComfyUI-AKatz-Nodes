@@ -10,13 +10,17 @@ from .ak_ipadapter_custom_weights import AK_IPAdapterCustomWeights
 from .ak_normalize_mask_color import AK_NormalizeMaskColor
 from .ak_audioreactive_dilation_mask import AK_AudioreactiveDilationMask
 from .ak_audioreactive_dynamic_dilation_mask import AK_AudioreactiveDynamicDilationMask
+from .ak_convert_audio_to_salt_audio import AK_ConvertAudioToSaltAudio
+from .ak_convert_salt_audio_to_audio import AK_ConvertSaltAudioToAudio
 
 NODE_CONFIG = {
   "AK_AnimatedDilationMaskLinear": {"class": AK_AnimatedDilationMaskLinear, "name": "AK Dilate Mask Linear"},
   "AK_IPAdapterCustomWeights": {"class": AK_IPAdapterCustomWeights, "name": "AK IPAdapter Custom Weights"},
   "AK_NormalizeMaskImage": {"class": AK_NormalizeMaskColor, "name": "AK Normalize Mask Color"},
   "AK_AudioreactiveDilationMask": {"class": AK_AudioreactiveDilationMask, "name": "AK Audioreactive Dilate Mask"},
-  "AK_AudioreactiveDynamicDilationMask": {"class": AK_AudioreactiveDynamicDilationMask, "name": "AK Audioreactive Dynamic Dilate Mask"}
+  "AK_AudioreactiveDynamicDilationMask": {"class": AK_AudioreactiveDynamicDilationMask, "name": "AK Audioreactive Dynamic Dilate Mask"},
+  "AK_ConvertAudioToSaltAudio": {"class": AK_ConvertAudioToSaltAudio, "name": "AK Convert Audio To Salt Audio"},
+  "AK_ConvertSaltAudioToAudio": {"class": AK_ConvertSaltAudioToAudio, "name": "AK Convert Salt Audio To Audio"}
 }
 
 def generate_node_mappings(node_config):
