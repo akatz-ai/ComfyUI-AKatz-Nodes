@@ -13,12 +13,11 @@ Dilates a mask in a linear animated fashion given a mask batch.
 [Node guide available here](https://cyber-damselfly-b6c.notion.site/AK-Audioreactive-Dynamic-Dilation-Mask-Node-815e086d428f46e0ad1da8b73f3fa38f)
 
 Dynamically dilates a mask based on audio amplitude, ideal for audio-reactive visualizations.
-
-mask: Input mask to be dilated.
-normalized_amp: Normalized amplitude (0-1) controlling the dilation.
-shape: "circle" or "square" to define the dilation shape.
-max_radius: Maximum radius for dilation (upper limit).
-min_radius: Minimum radius for dilation (lower limit).
+- mask: Input mask to be dilated.
+- normalized_amp: Normalized amplitude (0-1) controlling the dilation.
+- shape: "circle" or "square" to define the dilation shape.
+- max_radius: Maximum radius for dilation (upper limit).
+- min_radius: Minimum radius for dilation (lower limit).
 
 ### AK Normalize Mask Color
 
