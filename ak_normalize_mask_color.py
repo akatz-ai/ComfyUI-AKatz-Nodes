@@ -72,6 +72,10 @@ class AK_NormalizeMaskColor:
         # Ensure the video tensor is in the correct range [0, 1]
         image = image.clamp(0, 1)
 
+        # Convert the image tensor to a floating point dtype if necessary
+        if not image.is_floating_point():
+            image = image.to(torch.float32)
+
         # Convert RGB values to the range [0, 1]
         color = torch.tensor([red / 255.0, green / 255.0, blue / 255.0], dtype=image.dtype, device=image.device)
 
