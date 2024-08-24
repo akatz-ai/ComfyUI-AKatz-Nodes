@@ -17,7 +17,7 @@ class AK_ConvertAudioToSaltAudio:
             },
         }
 
-    CATEGORY = "💜Akatz Nodes"
+    CATEGORY = "💜Akatz Nodes/Audio"
     RETURN_TYPES = ("AUDIO",)
     RETURN_NAMES = ("audio",)
     FUNCTION = "convert_tensor_to_audio_bytes"

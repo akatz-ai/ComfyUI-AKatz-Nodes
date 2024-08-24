@@ -17,7 +17,7 @@ class AK_ConvertSaltAudioToAudio:
             },
         }
 
-    CATEGORY = "💜Akatz Nodes"
+    CATEGORY = "💜Akatz Nodes/Audio"
     RETURN_TYPES = ("AUDIO",)
     RETURN_NAMES = ("audio",)
     FUNCTION = "convert_audio_bytes_to_lazy_audio_map"

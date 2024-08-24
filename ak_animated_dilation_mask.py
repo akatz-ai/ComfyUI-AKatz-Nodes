@@ -28,7 +28,7 @@ class AK_AnimatedDilationMaskLinear:
             },
         }
 
-    CATEGORY = "💜Akatz Nodes"
+    CATEGORY = "💜Akatz Nodes/Mask Dilation"
     RETURN_TYPES = ("MASK",)
     FUNCTION = "dilate_mask_linear"
     DESCRIPTION = """

@@ -15,7 +15,7 @@ class AK_AudioreactiveDynamicDilationMask:
         return {
             "required": {
                 "mask": ("MASK",),
-                "normalized_amp": ("NORMALIZED_AMPLITUDE",),
+                "normalized_amp": ("FLOAT", {"defaultInput": True}),
                 "shape": (["circle","square"],),
                 "max_radius": ("INT",{
                     "default": 25
@@ -26,7 +26,7 @@ class AK_AudioreactiveDynamicDilationMask:
             },
         }
 
-    CATEGORY = "💜Akatz Nodes"
+    CATEGORY = "💜Akatz Nodes/Mask Dilation"
     RETURN_TYPES = ("MASK",)
     FUNCTION = "dilate_mask_with_amplitude"
     DESCRIPTION = """
