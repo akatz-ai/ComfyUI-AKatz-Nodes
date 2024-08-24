@@ -41,7 +41,7 @@ class AK_NormalizeMaskColor:
             },
         }
 
-    CATEGORY = "💜Akatz Nodes"
+    CATEGORY = "💜Akatz Nodes/Mask Utils"
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "clamp_black_and_white_video_custom_color"
     DESCRIPTION = """

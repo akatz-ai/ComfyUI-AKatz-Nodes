@@ -18,7 +18,7 @@ class AK_IPAdapterCustomWeights:
     RETURN_TYPES = ("FLOAT", "FLOAT", "IMAGE", "IMAGE")
     RETURN_NAMES = ("weights", "weights_invert", "image_1", "image_2")
     FUNCTION = "weights_by_timings"
-    CATEGORY = "💜Akatz Nodes"
+    CATEGORY = "💜Akatz Nodes/Scheduling"
     DESCRIPTION = """
       Used to provide custom timings for crossfading multiple images using just two IPAdapters.
       Text input should be a string of weights in the format:
