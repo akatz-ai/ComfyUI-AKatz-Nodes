@@ -18,7 +18,7 @@ class AK_LagChop:
             },
         }
 
-    CATEGORY = "💜Akatz Nodes/Utils"
+    CATEGORY = "💜Akatz Nodes/Audio"
     RETURN_TYPES = ("FLOAT",)  # Assuming ComfyUI returns a list
     RETURN_NAMES = ("output_list",)
     FUNCTION = "lag_chop_node"

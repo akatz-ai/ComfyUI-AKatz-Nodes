@@ -26,7 +26,7 @@ class AK_AudioreactiveDynamicDilationMask:
             },
         }
 
-    CATEGORY = "💜Akatz Nodes/Mask Dilation"
+    CATEGORY = "💜Akatz Nodes/Mask"
     RETURN_TYPES = ("MASK",)
     FUNCTION = "dilate_mask_with_amplitude"
     DESCRIPTION = """

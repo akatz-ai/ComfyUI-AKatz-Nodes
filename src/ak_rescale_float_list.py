@@ -9,22 +9,6 @@ class AK_RescaleFloatList:
         return {
             "required": {
                 "float_list": ("FLOAT", {"defaultInput": True}),  # Assuming ComfyUI has a type for lists of floats
-                # "orig_min": ("FLOAT", {
-                #     "default": 0.0,
-                #     "min": -1e10,
-                #     "max": 1e10,
-                #     "step": 0.001,
-                #     "round": 0.0001,
-                #     "display": "number"
-                # }),
-                # "orig_max": ("FLOAT", {
-                #     "default": 1.0,
-                #     "min": -1e10,
-                #     "max": 1e10,
-                #     "step": 0.001,
-                #     "round": 0.0001,
-                #     "display": "number"
-                # }),
                 "new_min": ("FLOAT", {
                     "default": 0.0,
                     "min": -1e10,
@@ -44,7 +28,7 @@ class AK_RescaleFloatList:
             },
         }
 
-    CATEGORY = "💜Akatz Nodes/Scheduling"
+    CATEGORY = "💜Akatz Nodes/Utils"
     RETURN_TYPES = ("FLOAT",)
     RETURN_NAMES = ("output_list",)
     FUNCTION = "rescale_values_node"
