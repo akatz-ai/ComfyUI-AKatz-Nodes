@@ -2,3 +2,4 @@
 /models/*.bin
 /models/*.safetensors
 .directory
+.src/__pycache__

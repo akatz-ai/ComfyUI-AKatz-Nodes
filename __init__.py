@@ -2,28 +2,29 @@
 @author: akatz
 @title: Akatz Custom Nodes
 @nickname: Akatz Custom Nodes
-@description: Custom node pack for nodes I use in my workflows. Includes Dilation mask nodes for animating subject masks.
+@description: Custom node pack for nodes I use in my workflows. 
+Includes Dilation mask nodes for animating subject masks, audio processing nodes, image processing nodes, utility nodes, etc.
 """
 
-from .ak_animated_dilation_mask import AK_AnimatedDilationMaskLinear
-from .ak_ipadapter_custom_weights import AK_IPAdapterCustomWeights
-from .ak_normalize_mask_color import AK_NormalizeMaskColor
-from .ak_audioreactive_dilation_mask import AK_AudioreactiveDilationMask
-from .ak_audioreactive_dynamic_dilation_mask import AK_AudioreactiveDynamicDilationMask
-from .ak_convert_audio_to_salt_audio import AK_ConvertAudioToSaltAudio
-from .ak_convert_salt_audio_to_audio import AK_ConvertSaltAudioToAudio
-from .ak_rescale_float_list import AK_RescaleFloatList
-from .ak_list_to_numpy_float_array import AK_ListToNumpyFloatArray
-from .ak_lag_chop import AK_LagChop
-from .ak_binary_amplitude_gate import AK_BinaryAmplitudeGate
-from .ak_adjust_list_size import AK_AdjustListSize
-from .ak_video_speed_adjust import AK_VideoSpeedAdjust
-from .ak_convert_list_to_float_list import AK_ConvertListToFloatList
+from .src.ak_animated_dilation_mask import AK_AnimatedDilationMaskLinear
+from .src.ak_ipadapter_custom_weights import AK_IPAdapterCustomWeights
+from .src.ak_normalize_image_color import AK_NormalizeImageColor
+from .src.ak_audioreactive_dilation_mask import AK_AudioreactiveDilationMask
+from .src.ak_audioreactive_dynamic_dilation_mask import AK_AudioreactiveDynamicDilationMask
+from .src.ak_convert_audio_to_salt_audio import AK_ConvertAudioToSaltAudio
+from .src.ak_convert_salt_audio_to_audio import AK_ConvertSaltAudioToAudio
+from .src.ak_rescale_float_list import AK_RescaleFloatList
+from .src.ak_list_to_numpy_float_array import AK_ListToNumpyFloatArray
+from .src.ak_lag_chop import AK_LagChop
+from .src.ak_binary_amplitude_gate import AK_BinaryAmplitudeGate
+from .src.ak_adjust_list_size import AK_AdjustListSize
+from .src.ak_video_speed_adjust import AK_VideoSpeedAdjust
+from .src.ak_convert_list_to_float_list import AK_ConvertListToFloatList
 
 NODE_CONFIG = {
   "AK_AnimatedDilationMaskLinear": {"class": AK_AnimatedDilationMaskLinear, "name": "AK Dilate Mask Linear"},
   "AK_IPAdapterCustomWeights": {"class": AK_IPAdapterCustomWeights, "name": "AK IPAdapter Custom Weights"},
-  "AK_NormalizeMaskImage": {"class": AK_NormalizeMaskColor, "name": "AK Normalize Mask Color"},
+  "AK_NormalizeMaskImage": {"class": AK_NormalizeImageColor, "name": "AK Normalize Image Color"},
   "AK_AudioreactiveDilationMask": {"class": AK_AudioreactiveDilationMask, "name": "AK Audioreactive Dilate Mask"},
   "AK_AudioreactiveDynamicDilationMask": {"class": AK_AudioreactiveDynamicDilationMask, "name": "AK Audioreactive Dynamic Dilate Mask"},
   "AK_ConvertAudioToSaltAudio": {"class": AK_ConvertAudioToSaltAudio, "name": "AK Convert Audio To Salt Audio"},

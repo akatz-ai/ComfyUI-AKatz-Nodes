@@ -34,7 +34,7 @@ class AK_BinaryAmplitudeGate:
             },
         }
 
-    CATEGORY = "💜Akatz Nodes/Utils"
+    CATEGORY = "💜Akatz Nodes/Audio"
     RETURN_TYPES = ("FLOAT",)  # Assuming ComfyUI returns a list
     RETURN_NAME = "output_list"
     FUNCTION = "binary_amplitude_gate_node"

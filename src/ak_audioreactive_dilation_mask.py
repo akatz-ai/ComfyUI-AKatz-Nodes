@@ -33,14 +33,12 @@ class AK_AudioreactiveDilationMask:
                 "attack": ("FLOAT", {
                     "default": 0.5,
                     "min": 0.0,
-                    "max": 10.0,  # Increased max for longer attack times
                     "step": 0.01,
                     "round": False,
                     "display": "number"}),
                 "decay": ("FLOAT", {
                     "default": 0.5,
                     "min": 0.0,
-                    "max": 10.0,  # Increased max for longer decay times
                     "step": 0.01,
                     "round": False,
                     "display": "number"}),
@@ -49,7 +47,7 @@ class AK_AudioreactiveDilationMask:
             },
         }
 
-    CATEGORY = "💜Akatz Nodes/Mask Dilation"
+    CATEGORY = "💜Akatz Nodes/Mask"
     RETURN_TYPES = ("MASK",)
     FUNCTION = "dilate_mask_with_amplitude"
     DESCRIPTION = """

@@ -14,7 +14,7 @@ class AK_VideoSpeedAdjust:
             },
         }
 
-    CATEGORY = "💜Akatz Nodes/Scheduling"
+    CATEGORY = "💜Akatz Nodes/Image"
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "adjust_speed"
     DESCRIPTION = """

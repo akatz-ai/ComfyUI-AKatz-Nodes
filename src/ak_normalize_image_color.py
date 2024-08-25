@@ -1,7 +1,7 @@
 import numpy as np
 import torch
 
-class AK_NormalizeMaskColor:
+class AK_NormalizeImageColor:
     def __init__(self):
             pass
 
@@ -41,12 +41,12 @@ class AK_NormalizeMaskColor:
             },
         }
 
-    CATEGORY = "💜Akatz Nodes/Mask Utils"
+    CATEGORY = "💜Akatz Nodes/Image"
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "clamp_black_and_white_video_custom_color"
     DESCRIPTION = """
-    # AK Normalize Mask Color
-    Normalize the color of the mask to a specified color.
+    # AK Normalize Image Color
+    Sets the non-black pixels of input images to one specified color.
     - image: The input video tensor with shape (num_frames, H, W, C).
     - threshold: The threshold value for determining black pixels.
     - r: Red channel value (0-255) for the non-black pixels.
