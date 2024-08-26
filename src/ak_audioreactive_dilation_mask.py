@@ -15,7 +15,7 @@ class AK_AudioreactiveDilationMask:
         return {
             "required": {
                 "mask": ("MASK",),
-                "normalized_amp": ("FLOAT", {"defaultInput": True}),
+                "normalized_amp": ("FLOAT,NORMALIZED_AMPLITUDE", {"defaultInput": True}),
                 "fps": ("INT", {
                     "default": 30,  # Default FPS
                     "min": 1,
@@ -46,6 +46,14 @@ class AK_AudioreactiveDilationMask:
                 "decay_function": (["linear", "ease-in", "ease-out", "ease-in-out"],),
             },
         }
+
+    @classmethod
+    def VALIDATE_INPUTS(cls, input_types):
+        if input_types["normalized_amp"] not in ("NORMALIZED_AMPLITUDE", "FLOAT"):
+            return "normalized_amp must be an NORMALIZED_AMPLITUDE or FLOAT type"
+        if input_types["mask"] != "MASK":
+            return "mask must be a MASK type"
+        return True
 
     CATEGORY = "💜Akatz Nodes/Mask"
     RETURN_TYPES = ("MASK",)
