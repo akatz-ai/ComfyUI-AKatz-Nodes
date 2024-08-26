@@ -110,6 +110,10 @@ class AK_AudioreactiveDilationMask:
         dup = copy.deepcopy(mask.cpu().numpy())
         current_radius = 0
         radius_progress = 0
+        
+        # Convert normalize_amp into a float list from numpy array if it is not already a list
+        if not isinstance(normalized_amp, list):
+            normalized_amp = normalized_amp.tolist()
 
         # Convert attack and decay from seconds to frames
         attack_frames = max(attack * fps, 1)
