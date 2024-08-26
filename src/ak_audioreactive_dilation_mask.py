@@ -15,7 +15,7 @@ class AK_AudioreactiveDilationMask:
         return {
             "required": {
                 "mask": ("MASK",),
-                "normalized_amp": ("FLOAT", {"defaultInput": True}),
+                "normalized_amp": ("FLOAT,NORMALIZED_AMPLITUDE", {"defaultInput": True}),
                 "fps": ("INT", {
                     "default": 30,  # Default FPS
                     "min": 1,
@@ -46,6 +46,14 @@ class AK_AudioreactiveDilationMask:
                 "decay_function": (["linear", "ease-in", "ease-out", "ease-in-out"],),
             },
         }
+
+    @classmethod
+    def VALIDATE_INPUTS(cls, input_types):
+        if input_types["normalized_amp"] not in ("NORMALIZED_AMPLITUDE", "FLOAT"):
+            return "normalized_amp must be an NORMALIZED_AMPLITUDE or FLOAT type"
+        if input_types["mask"] != "MASK":
+            return "mask must be a MASK type"
+        return True
 
     CATEGORY = "💜Akatz Nodes/Mask"
     RETURN_TYPES = ("MASK",)
@@ -102,6 +110,10 @@ class AK_AudioreactiveDilationMask:
         dup = copy.deepcopy(mask.cpu().numpy())
         current_radius = 0
         radius_progress = 0
+        
+        # Convert normalize_amp into a float list from numpy array if it is not already a list
+        if not isinstance(normalized_amp, list):
+            normalized_amp = normalized_amp.tolist()
 
         # Convert attack and decay from seconds to frames
         attack_frames = max(attack * fps, 1)

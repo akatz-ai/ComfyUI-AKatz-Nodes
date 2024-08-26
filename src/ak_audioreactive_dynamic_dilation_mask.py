@@ -15,7 +15,7 @@ class AK_AudioreactiveDynamicDilationMask:
         return {
             "required": {
                 "mask": ("MASK",),
-                "normalized_amp": ("FLOAT", {"defaultInput": True}),
+                "normalized_amp": ("FLOAT,NORMALIZED_AMPLITUDE", {"defaultInput": True}),
                 "shape": (["circle","square"],),
                 "max_radius": ("INT",{
                     "default": 25
@@ -25,6 +25,14 @@ class AK_AudioreactiveDynamicDilationMask:
                 }),
             },
         }
+        
+    @classmethod
+    def VALIDATE_INPUTS(cls, input_types):
+        if input_types["normalized_amp"] not in ("NORMALIZED_AMPLITUDE", "FLOAT"):
+            return "normalized_amp must be an NORMALIZED_AMPLITUDE or FLOAT type"
+        if input_types["mask"] != "MASK":
+            return "mask must be a MASK type"
+        return True
 
     CATEGORY = "💜Akatz Nodes/Mask"
     RETURN_TYPES = ("MASK",)
@@ -48,6 +56,10 @@ class AK_AudioreactiveDynamicDilationMask:
 
     def dilate_mask_with_amplitude(self, mask, normalized_amp, shape="circle", max_radius=25, min_radius=0):
         dup = copy.deepcopy(mask.cpu().numpy())
+        
+        # Convert normalize_amp into a float list from numpy array if it is not already a list
+        if not isinstance(normalized_amp, list):
+            normalized_amp = normalized_amp.tolist()
 
         # Pre-compute circular kernels if shape is "circle"
         if shape == "circle":
