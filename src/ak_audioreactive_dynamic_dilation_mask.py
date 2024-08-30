@@ -15,7 +15,7 @@ class AK_AudioreactiveDynamicDilationMask:
         return {
             "required": {
                 "mask": ("MASK",),
-                "normalized_amp": ("FLOAT,NORMALIZED_AMPLITUDE", {"defaultInput": True}),
+                "normalized_amp": ("*", {"defaultInput": True}),
                 "shape": (["circle","square"],),
                 "max_radius": ("INT",{
                     "default": 25
