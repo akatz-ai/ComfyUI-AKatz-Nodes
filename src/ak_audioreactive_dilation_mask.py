@@ -15,7 +15,7 @@ class AK_AudioreactiveDilationMask:
         return {
             "required": {
                 "mask": ("MASK",),
-                "normalized_amp": ("FLOAT,NORMALIZED_AMPLITUDE", {"defaultInput": True}),
+                "normalized_amp": ("*", {"defaultInput": True}),
                 "fps": ("INT", {
                     "default": 30,  # Default FPS
                     "min": 1,
