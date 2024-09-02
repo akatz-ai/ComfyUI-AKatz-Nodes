@@ -20,6 +20,7 @@ from .src.ak_binary_amplitude_gate import AK_BinaryAmplitudeGate
 from .src.ak_adjust_list_size import AK_AdjustListSize
 from .src.ak_video_speed_adjust import AK_VideoSpeedAdjust
 from .src.ak_convert_list_to_float_list import AK_ConvertListToFloatList
+from .src.ak_shrink_num_sequence import AK_ShrinkNumSequence
 
 NODE_CONFIG = {
   "AK_AnimatedDilationMaskLinear": {"class": AK_AnimatedDilationMaskLinear, "name": "AK Dilate Mask Linear"},
@@ -35,7 +36,8 @@ NODE_CONFIG = {
   "AK_BinaryAmplitudeGate": {"class": AK_BinaryAmplitudeGate, "name": "AK Binary Amplitude Gate"},
   "AK_AdjustListSize": {"class": AK_AdjustListSize, "name": "AK Adjust List Size"},
   "AK_VideoSpeedAdjust": {"class": AK_VideoSpeedAdjust, "name": "AK Video Speed Adjust"},
-  "AK_ConvertListToFloatList": {"class": AK_ConvertListToFloatList, "name": "AK Convert List To Float List"}
+  "AK_ConvertListToFloatList": {"class": AK_ConvertListToFloatList, "name": "AK Convert List To Float List"},
+  "AK_ShrinkNumSequence": {"class": AK_ShrinkNumSequence, "name": "AK Shrink Num Sequence"},
 }
 
 def generate_node_mappings(node_config):
@@ -55,6 +57,6 @@ WEB_DIRECTORY = "./web"
 __all__ = ['NODE_CLASS_MAPPINGS', 'NODE_DISPLAY_NAME_MAPPINGS', "WEB_DIRECTORY"]
 
 ascii_art = """
-AKATZ NODES
+💜 AKATZ NODES 💜
 """
 print(ascii_art)
