@@ -21,6 +21,9 @@ from .src.ak_adjust_list_size import AK_AdjustListSize
 from .src.ak_video_speed_adjust import AK_VideoSpeedAdjust
 from .src.ak_convert_list_to_float_list import AK_ConvertListToFloatList
 from .src.ak_shrink_num_sequence import AK_ShrinkNumSequence
+from .src.ak_dilate_mask_linear_infinite import AK_DilateMaskLinearInfinite
+from .src.ak_audio_framesync_schedule import AK_AudioFramesyncSchedule
+
 
 NODE_CONFIG = {
   "AK_AnimatedDilationMaskLinear": {"class": AK_AnimatedDilationMaskLinear, "name": "AK Dilate Mask Linear"},
@@ -38,6 +41,8 @@ NODE_CONFIG = {
   "AK_VideoSpeedAdjust": {"class": AK_VideoSpeedAdjust, "name": "AK Video Speed Adjust"},
   "AK_ConvertListToFloatList": {"class": AK_ConvertListToFloatList, "name": "AK Convert List To Float List"},
   "AK_ShrinkNumSequence": {"class": AK_ShrinkNumSequence, "name": "AK Shrink Num Sequence"},
+  "AK_DilateMaskLinearInfinite": {"class": AK_DilateMaskLinearInfinite, "name": "AK Dilate Mask Linear Infinite"},
+  "AK_AudioFramesyncSchedule": {"class": AK_AudioFramesyncSchedule, "name": "AK Schedule Audio Framesync"},
 }
 
 def generate_node_mappings(node_config):
