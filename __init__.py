@@ -23,7 +23,7 @@ from .src.ak_convert_list_to_float_list import AK_ConvertListToFloatList
 from .src.ak_shrink_num_sequence import AK_ShrinkNumSequence
 from .src.ak_dilate_mask_linear_infinite import AK_DilateMaskLinearInfinite
 from .src.ak_audio_framesync_schedule import AK_AudioFramesyncSchedule
-
+from .src.ak_audioreactive_dilate_mask_infinite import AK_AudioreactiveDilateMaskInfinite
 
 NODE_CONFIG = {
   "AK_AnimatedDilationMaskLinear": {"class": AK_AnimatedDilationMaskLinear, "name": "AK Dilate Mask Linear"},
@@ -43,6 +43,7 @@ NODE_CONFIG = {
   "AK_ShrinkNumSequence": {"class": AK_ShrinkNumSequence, "name": "AK Shrink Num Sequence"},
   "AK_DilateMaskLinearInfinite": {"class": AK_DilateMaskLinearInfinite, "name": "AK Dilate Mask Linear Infinite"},
   "AK_AudioFramesyncSchedule": {"class": AK_AudioFramesyncSchedule, "name": "AK Schedule Audio Framesync"},
+  "AK_AudioreactiveDilateMaskInfinite": {"class": AK_AudioreactiveDilateMaskInfinite, "name": "AK Audioreactive Dilate Mask Infinite"},
 }
 
 def generate_node_mappings(node_config):
