@@ -24,6 +24,10 @@ from .src.ak_shrink_num_sequence import AK_ShrinkNumSequence
 from .src.ak_dilate_mask_linear_infinite import AK_DilateMaskLinearInfinite
 from .src.ak_audio_framesync_schedule import AK_AudioFramesyncSchedule
 from .src.ak_audioreactive_dilate_mask_infinite import AK_AudioreactiveDilateMaskInfinite
+from .src.ak_keyframe_scheduler import AK_KeyframeScheduler
+from .src.ak_scheduled_binary_comparison import AK_ScheduledBinaryComparison
+from .src.ak_brightness_to_float_list import AK_BrightnessToFloatList
+from .src.ak_float_list_to_dilate_mask_schedule import AK_FloatListToDilateMaskSchedule
 
 NODE_CONFIG = {
   "AK_AnimatedDilationMaskLinear": {"class": AK_AnimatedDilationMaskLinear, "name": "AK Dilate Mask Linear"},
@@ -44,6 +48,10 @@ NODE_CONFIG = {
   "AK_DilateMaskLinearInfinite": {"class": AK_DilateMaskLinearInfinite, "name": "AK Dilate Mask Linear Infinite"},
   "AK_AudioFramesyncSchedule": {"class": AK_AudioFramesyncSchedule, "name": "AK Schedule Audio Framesync"},
   "AK_AudioreactiveDilateMaskInfinite": {"class": AK_AudioreactiveDilateMaskInfinite, "name": "AK Audioreactive Dilate Mask Infinite"},
+  "AK_KeyframeScheduler": {"class": AK_KeyframeScheduler, "name": "AK Keyframe Scheduler"},
+  "AK_ScheduledBinaryComparison": {"class": AK_ScheduledBinaryComparison, "name": "AK Scheduled Binary Comparison"},
+  "AK_BrightnessToFloatList": {"class": AK_BrightnessToFloatList, "name": "AK Brightness To Float List"},
+  "AK_FloatListToDilateMaskSchedule": {"class": AK_FloatListToDilateMaskSchedule, "name": "AK Float List To Dilate Mask Schedule"},
 }
 
 def generate_node_mappings(node_config):
