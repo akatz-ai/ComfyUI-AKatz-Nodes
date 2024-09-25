@@ -28,30 +28,40 @@ from .src.ak_keyframe_scheduler import AK_KeyframeScheduler
 from .src.ak_scheduled_binary_comparison import AK_ScheduledBinaryComparison
 from .src.ak_brightness_to_float_list import AK_BrightnessToFloatList
 from .src.ak_float_list_to_dilate_mask_schedule import AK_FloatListToDilateMaskSchedule
+from .src.ak_fade_between_batches import AK_FadeBetweenBatches
+from .src.ak_split_image_batch import AK_SplitImageBatch
+from .src.ak_convert_flex_feature_to_float_list import AK_FlexFeatureToFloatList
+from .src.ak_convert_float_list_to_flex_feature import AK_FloatListToFlexFeature
+
+NAME_POSTFIX = " | Akatz"
 
 NODE_CONFIG = {
-  "AK_AnimatedDilationMaskLinear": {"class": AK_AnimatedDilationMaskLinear, "name": "AK Dilate Mask Linear"},
-  "AK_IPAdapterCustomWeights": {"class": AK_IPAdapterCustomWeights, "name": "AK IPAdapter Custom Weights"},
-  "AK_NormalizeMaskImage": {"class": AK_NormalizeImageColor, "name": "AK Normalize Image Color"},
-  "AK_AudioreactiveDilationMask": {"class": AK_AudioreactiveDilationMask, "name": "AK Audioreactive Dilate Mask"},
-  "AK_AudioreactiveDynamicDilationMask": {"class": AK_AudioreactiveDynamicDilationMask, "name": "AK Audioreactive Dynamic Dilate Mask"},
-  "AK_ConvertAudioToSaltAudio": {"class": AK_ConvertAudioToSaltAudio, "name": "AK Convert Audio To Salt Audio"},
-  "AK_ConvertSaltAudioToAudio": {"class": AK_ConvertSaltAudioToAudio, "name": "AK Convert Salt Audio To Audio"},
-  "AK_RescaleFloatList": {"class": AK_RescaleFloatList, "name": "AK Rescale Float List"},
-  "AK_ListToNumpyFloatArray": {"class": AK_ListToNumpyFloatArray, "name": "AK List To Numpy Float Array"},
-  "AK_LagChop": {"class": AK_LagChop, "name": "AK Lag Chop"},
-  "AK_BinaryAmplitudeGate": {"class": AK_BinaryAmplitudeGate, "name": "AK Binary Amplitude Gate"},
-  "AK_AdjustListSize": {"class": AK_AdjustListSize, "name": "AK Adjust List Size"},
-  "AK_VideoSpeedAdjust": {"class": AK_VideoSpeedAdjust, "name": "AK Video Speed Adjust"},
-  "AK_ConvertListToFloatList": {"class": AK_ConvertListToFloatList, "name": "AK Convert List To Float List"},
-  "AK_ShrinkNumSequence": {"class": AK_ShrinkNumSequence, "name": "AK Shrink Num Sequence"},
-  "AK_DilateMaskLinearInfinite": {"class": AK_DilateMaskLinearInfinite, "name": "AK Dilate Mask Linear Infinite"},
-  "AK_AudioFramesyncSchedule": {"class": AK_AudioFramesyncSchedule, "name": "AK Schedule Audio Framesync"},
-  "AK_AudioreactiveDilateMaskInfinite": {"class": AK_AudioreactiveDilateMaskInfinite, "name": "AK Audioreactive Dilate Mask Infinite"},
-  "AK_KeyframeScheduler": {"class": AK_KeyframeScheduler, "name": "AK Keyframe Scheduler"},
-  "AK_ScheduledBinaryComparison": {"class": AK_ScheduledBinaryComparison, "name": "AK Scheduled Binary Comparison"},
-  "AK_BrightnessToFloatList": {"class": AK_BrightnessToFloatList, "name": "AK Brightness To Float List"},
-  "AK_FloatListToDilateMaskSchedule": {"class": AK_FloatListToDilateMaskSchedule, "name": "AK Float List To Dilate Mask Schedule"},
+  "AK_AnimatedDilationMaskLinear": {"class": AK_AnimatedDilationMaskLinear, "name": "Dilate Mask Linear"},
+  "AK_IPAdapterCustomWeights": {"class": AK_IPAdapterCustomWeights, "name": "IPAdapter Custom Weights"},
+  "AK_NormalizeMaskImage": {"class": AK_NormalizeImageColor, "name": "Normalize Image Color"},
+  "AK_AudioreactiveDilationMask": {"class": AK_AudioreactiveDilationMask, "name": "Audioreactive Dilate Mask"},
+  "AK_AudioreactiveDynamicDilationMask": {"class": AK_AudioreactiveDynamicDilationMask, "name": "Audioreactive Dynamic Dilate Mask"},
+  "AK_ConvertAudioToSaltAudio": {"class": AK_ConvertAudioToSaltAudio, "name": "Convert Audio To Salt Audio"},
+  "AK_ConvertSaltAudioToAudio": {"class": AK_ConvertSaltAudioToAudio, "name": "Convert Salt Audio To Audio"},
+  "AK_RescaleFloatList": {"class": AK_RescaleFloatList, "name": "Rescale Float List"},
+  "AK_ListToNumpyFloatArray": {"class": AK_ListToNumpyFloatArray, "name": "List To Numpy Float Array"},
+  "AK_LagChop": {"class": AK_LagChop, "name": "Lag Chop"},
+  "AK_BinaryAmplitudeGate": {"class": AK_BinaryAmplitudeGate, "name": "Binary Amplitude Gate"},
+  "AK_AdjustListSize": {"class": AK_AdjustListSize, "name": "Adjust List Size"},
+  "AK_VideoSpeedAdjust": {"class": AK_VideoSpeedAdjust, "name": "Video Speed Adjust"},
+  "AK_ConvertListToFloatList": {"class": AK_ConvertListToFloatList, "name": "Convert List To Float List"},
+  "AK_ShrinkNumSequence": {"class": AK_ShrinkNumSequence, "name": "Shrink Num Sequence"},
+  "AK_DilateMaskLinearInfinite": {"class": AK_DilateMaskLinearInfinite, "name": "Dilate Mask Linear Infinite"},
+  "AK_AudioFramesyncSchedule": {"class": AK_AudioFramesyncSchedule, "name": "Schedule Audio Framesync"},
+  "AK_AudioreactiveDilateMaskInfinite": {"class": AK_AudioreactiveDilateMaskInfinite, "name": "Audioreactive Dilate Mask Infinite"},
+  "AK_KeyframeScheduler": {"class": AK_KeyframeScheduler, "name": "Keyframe Scheduler"},
+  "AK_ScheduledBinaryComparison": {"class": AK_ScheduledBinaryComparison, "name": "Scheduled Binary Comparison"},
+  "AK_BrightnessToFloatList": {"class": AK_BrightnessToFloatList, "name": "Brightness To Float List"},
+  "AK_FloatListToDilateMaskSchedule": {"class": AK_FloatListToDilateMaskSchedule, "name": "Float List To Dilate Mask Schedule"},
+  "AK_FadeBetweenBatches": {"class": AK_FadeBetweenBatches, "name": "Fade Between Batches"},
+  "AK_SplitImageBatch": {"class": AK_SplitImageBatch, "name": "Split Image Batch"},
+  "AK_FlexFeatureToFloatList": {"class": AK_FlexFeatureToFloatList, "name": "Flex Feature To Float List"},
+  "AK_FloatListToFlexFeature": {"class": AK_FloatListToFlexFeature, "name": "Float List To Flex Feature"},
 }
 
 def generate_node_mappings(node_config):
@@ -60,7 +70,7 @@ def generate_node_mappings(node_config):
 
     for node_name, node_info in node_config.items():
         node_class_mappings[node_name] = node_info["class"]
-        node_display_name_mappings[node_name] = node_info.get("name", node_info["class"].__name__)
+        node_display_name_mappings[node_name] = node_info.get("name", node_info["class"].__name__) + NAME_POSTFIX
 
     return node_class_mappings, node_display_name_mappings
 
