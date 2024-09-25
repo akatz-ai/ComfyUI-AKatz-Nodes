@@ -60,7 +60,7 @@ NODE_CONFIG = {
   "AK_FloatListToDilateMaskSchedule": {"class": AK_FloatListToDilateMaskSchedule, "name": "Float List To Dilate Mask Schedule"},
   "AK_FadeBetweenBatches": {"class": AK_FadeBetweenBatches, "name": "Fade Between Batches"},
   "AK_SplitImageBatch": {"class": AK_SplitImageBatch, "name": "Split Image Batch"},
-  "AK_FlexFeatureToFloatList": {"class": AK_FlexFeatureToFloatList, "name": "Flex To Float List"},
+  "AK_FlexFeatureToFloatList": {"class": AK_FlexFeatureToFloatList, "name": "Flex Feature To Float List"},
   "AK_FloatListToFlexFeature": {"class": AK_FloatListToFlexFeature, "name": "Float List To Flex Feature"},
 }
 
