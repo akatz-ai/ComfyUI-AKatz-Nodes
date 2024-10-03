@@ -9,7 +9,8 @@ class AK_IPAdapterCustomWeights:
         return {"required": {
             "image": ("IMAGE", {"defaultInput": True}),
             "weights": ("STRING", {"default": '(1.0),', "multiline": True }),
-            "default_easing": (["linear", "ease_in_out", "ease_in", "ease_out"], { "default": "ease_in_out" } ),
+            "default_weights": ("STRING", {"default": "1.0, 0.0"}),
+            "default_easing": (["linear", "ease_in_out", "ease_in", "ease_out"], { "default": "linear" } ),
             "timing_mode": (["Frame", "Percent"], { "default": "Frame" } ),
             "frames": ("INT", {"default": 0, "min": 0, "step": 1 }),
             },
@@ -27,13 +28,14 @@ class AK_IPAdapterCustomWeights:
       Percentage: "((0.0, 0.0), 0), (1.0, 0.1, 0.1, linear), (0.5, 0.25, 0.1, ease_in), ((0.0, 0.0), 0.5, 0.25, ease_out)"
       A default timing of "ease_in_out" is used if no interpolation function is specified.
       - weights: The weights and timings to be applied to the images
+      - default_weights: The default starting weights (weights, weights_invert) to be used for transitions
       - default_easing: The default easing function to be used for transitions
       - timing_mode: The timing mode to be used for transitions (Frame or Percent)
       - frames: The number of frames in the output
       - image: The image batch to be crossfaded by the weights
     """
 
-    def parse_weights_string(self, weights_str, default_easing="ease_in_out", timing_mode="Frame", frames=0):
+    def parse_weights_string(self, weights_str, default_weights="1.0, 0.0", default_easing="ease_in_out", timing_mode="Frame", frames=0):
         # Regular expression to capture the desired format, including optional commas and whitespace
         pattern = r'\(\s*(\d*\.?\d+|\(\s*\d*\.?\d+\s*,\s*\d*\.?\d+\s*\))\s*,\s*(\d*\.?\d+)\s*(?:,\s*(\d*\.?\d+)\s*)?(?:,\s*(\w+)\s*)?\)\s*,?'
 
@@ -84,10 +86,26 @@ class AK_IPAdapterCustomWeights:
         
         return weights_list
 
-    def interpolate_weights(self, weights_list, frames):
-        # Initialize weights based on the first tuple
-        initial_weight = weights_list[0][0][0] if weights_list[0][1] == 0 else 1.0
-        initial_weight_invert = weights_list[0][0][1] if weights_list[0][1] == 0 else 0.0
+    def parse_default_weights(self, default_weights):
+        try:
+            # Parse the default weights as either a float or a tuple of two floats
+            weight = ast.literal_eval(default_weights.strip())
+        except (SyntaxError, ValueError):
+            raise ValueError(f"Invalid default weight format: {default_weights}")
+        
+        if isinstance(weight, float):
+            return [weight, 1.0 - weight]  # Convert single float to list with weights and weights_invert
+        elif isinstance(weight, list) or isinstance(weight, tuple):
+            if len(weight) == 2 and all(isinstance(w, (int, float)) for w in weight):
+                return list(weight)
+            else:
+                raise ValueError(f"Invalid default weight tuple format: {default_weights}")
+        else:
+            raise ValueError(f"Invalid default weight type: {default_weights}")
+
+    def interpolate_weights(self, weights_list, frames, default_weights):
+        # Initialize weights based on the default weights
+        initial_weight, initial_weight_invert = default_weights
         weights = [initial_weight] * frames
         weights_invert = [initial_weight_invert] * frames
         
@@ -129,12 +147,24 @@ class AK_IPAdapterCustomWeights:
         
         return weights, weights_invert
 
-    def weights_by_timings(self, weights='', frames=0, image=None, default_easing="linear", timing_mode="Frame"):
-        # Parse the weights string
-        weights_list = self.parse_weights_string(weights, default_easing, timing_mode, frames)
+    def weights_by_timings(self, weights='', frames=0, image=None, default_weights="1.0, 0.0", default_easing="linear", timing_mode="Frame"):
+        # Parse the default weights
+        default_weights = self.parse_default_weights(default_weights)
+        
+        # Initialize weights_list
+        weights_list = []
 
-        # Interpolate weights based on parsed weights_list
-        weights, weights_invert = self.interpolate_weights(weights_list, frames)
+        # If weights string is empty, use default weights for the entire frame range
+        if not weights:
+            weights_list.append((default_weights, 0, frames, default_easing))
+            weights = [default_weights[0]] * frames
+            weights_invert = [default_weights[1]] * frames
+        else:
+            # Parse the weights string
+            weights_list = self.parse_weights_string(weights, default_weights, default_easing, timing_mode, frames)
+
+            # Interpolate weights based on parsed weights_list
+            weights, weights_invert = self.interpolate_weights(weights_list, frames, default_weights)
         
         if len(weights) == 0:
             weights = [0.0]
