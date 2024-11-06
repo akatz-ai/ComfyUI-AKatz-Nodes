@@ -32,6 +32,8 @@ from .src.ak_fade_between_batches import AK_FadeBetweenBatches
 from .src.ak_split_image_batch import AK_SplitImageBatch
 from .src.ak_convert_flex_feature_to_float_list import AK_FlexFeatureToFloatList
 from .src.ak_convert_float_list_to_flex_feature import AK_FloatListToFlexFeature
+from .src.ak_adjust_depthmap_brightness import AK_AdjustDepthmapBrightness
+from .src.ak_make_depthmap_seamless import AK_MakeDepthmapSeamless
 
 NAME_POSTFIX = " | Akatz"
 
@@ -62,7 +64,10 @@ NODE_CONFIG = {
   "AK_SplitImageBatch": {"class": AK_SplitImageBatch, "name": "Split Image Batch"},
   "AK_FlexFeatureToFloatList": {"class": AK_FlexFeatureToFloatList, "name": "Flex Feature To Float List"},
   "AK_FloatListToFlexFeature": {"class": AK_FloatListToFlexFeature, "name": "Float List To Flex Feature"},
+  "AK_AdjustDepthmapBrightness": {"class": AK_AdjustDepthmapBrightness, "name": "Adjust Depthmap Brightness"},
+  "AK_MakeDepthmapSeamless": {"class": AK_MakeDepthmapSeamless, "name": "Make Depthmap Seamless"},
 }
+
 
 def generate_node_mappings(node_config):
     node_class_mappings = {}
