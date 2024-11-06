@@ -26,7 +26,9 @@ class AK_AudioreactiveDilationMask:
                 "max_radius": ("INT", {
                     "default": 25
                 }),
-                "min_radius": ("INT",),
+                "min_radius": ("INT", {
+                    "default": 0
+                }),
                 "threshold": ("FLOAT", {
                     "default": 0.5
                 }),
