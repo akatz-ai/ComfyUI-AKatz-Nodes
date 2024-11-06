@@ -9,7 +9,7 @@ class AK_VideoSpeedAdjust:
         return {
             "required": {
                 "image_batch": ("IMAGE",),
-                "speed_schedule": ("FLOAT",),
+                "speed_schedule": ("FLOAT", {"forceInput": True}),
                 "fps": ("INT", {"default": 30, "min": 1}),
             },
         }
