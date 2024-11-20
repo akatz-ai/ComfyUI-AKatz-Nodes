@@ -7,32 +7,32 @@ class AK_IPAdapterCustomWeights:
     @classmethod
     def INPUT_TYPES(s):
         return {"required": {
-            "image": ("IMAGE", {"defaultInput": True}),
-            "weights": ("STRING", {"default": '(1.0),', "multiline": True }),
-            "default_weights": ("STRING", {"default": "1.0, 0.0"}),
-            "default_easing": (["linear", "ease_in_out", "ease_in", "ease_out"], { "default": "linear" } ),
-            "timing_mode": (["Frame", "Percent"], { "default": "Frame" } ),
-            "frames": ("INT", {"default": 0, "min": 0, "step": 1 }),
-            },
-        }
+        "image": ("IMAGE", {"defaultInput": True}),
+        "weights": ("STRING", {"default": '(1.0),', "multiline": True}),
+        "default_weights": ("STRING", {"default": "1.0, 0.0"}),
+        "default_easing": (["linear", "ease_in_out", "ease_in", "ease_out"], {"default": "linear"}),
+        "timing_mode": (["Frame", "Percent"], {"default": "Frame"}),
+        "frames": ("INT", {"default": 0, "min": 0, "step": 1}),
+        },
+    }
 
     RETURN_TYPES = ("FLOAT", "FLOAT", "IMAGE", "IMAGE")
     RETURN_NAMES = ("weights", "weights_invert", "image_1", "image_2")
     FUNCTION = "weights_by_timings"
     CATEGORY = "💜Akatz Nodes/IPAdapter"
     DESCRIPTION = """
-      Used to provide custom timings for crossfading multiple images using just two IPAdapters.
-      Text input should be a string of weights in the format:
-      (<weights (float or float tuple)>, <frame_index (int or float)>, <transition_frames (int or float, optional)>, <easing_function (string, optional)>),...
-      E.g. Frame: "((0.0, 0.0), 0), (1.0, 5, 20, linear), (0.5, 25, 10, ease_in), ((0.0, 0.0), 48, 24, ease_out)"
-      Percentage: "((0.0, 0.0), 0), (1.0, 0.1, 0.1, linear), (0.5, 0.25, 0.1, ease_in), ((0.0, 0.0), 0.5, 0.25, ease_out)"
-      A default timing of "ease_in_out" is used if no interpolation function is specified.
-      - weights: The weights and timings to be applied to the images
-      - default_weights: The default starting weights (weights, weights_invert) to be used for transitions
-      - default_easing: The default easing function to be used for transitions
-      - timing_mode: The timing mode to be used for transitions (Frame or Percent)
-      - frames: The number of frames in the output
-      - image: The image batch to be crossfaded by the weights
+    Used to provide custom timings for crossfading multiple images using just two IPAdapters.
+    Text input should be a string of weights in the format:
+    (<weights (float or float tuple)>, <frame_index (int or float)>, <transition_frames (int or float, optional)>, <easing_function (string, optional)>),...
+    E.g. Frame: "((0.0, 0.0), 0), (1.0, 5, 20, linear), (0.5, 25, 10, ease_in), ((0.0, 0.0), 48, 24, ease_out)"
+    Percentage: "((0.0, 0.0), 0), (1.0, 0.1, 0.1, linear), (0.5, 0.25, 0.1, ease_in), ((0.0, 0.0), 0.5, 0.25, ease_out)"
+    A default timing of "ease_in_out" is used if no interpolation function is specified.
+    - weights: The weights and timings to be applied to the images
+    - default_weights: The default starting weights (weights, weights_invert) to be used for transitions
+    - default_easing: The default easing function to be used for transitions
+    - timing_mode: The timing mode to be used for transitions (Frame or Percent)
+    - frames: The number of frames in the output
+    - image: The image batch to be crossfaded by the weights
     """
 
     def parse_weights_string(self, weights_str, default_weights="1.0, 0.0", default_easing="ease_in_out", timing_mode="Frame", frames=0):
@@ -93,15 +93,12 @@ class AK_IPAdapterCustomWeights:
         except (SyntaxError, ValueError):
             raise ValueError(f"Invalid default weight format: {default_weights}")
         
-        if isinstance(weight, float):
-            return [weight, 1.0 - weight]  # Convert single float to list with weights and weights_invert
-        elif isinstance(weight, list) or isinstance(weight, tuple):
-            if len(weight) == 2 and all(isinstance(w, (int, float)) for w in weight):
+        if isinstance(weight, (int, float)):
+            return [float(weight), 1.0 - float(weight)]  # Convert single float to list with weights and weights_invert
+        elif isinstance(weight, (list, tuple)) and len(weight) == 2:
+            if all(isinstance(w, (int, float)) for w in weight):
                 return list(weight)
-            else:
-                raise ValueError(f"Invalid default weight tuple format: {default_weights}")
-        else:
-            raise ValueError(f"Invalid default weight type: {default_weights}")
+        raise ValueError(f"Invalid default weight format: {default_weights}")
 
     def interpolate_weights(self, weights_list, frames, default_weights):
         # Initialize weights based on the default weights
@@ -149,7 +146,7 @@ class AK_IPAdapterCustomWeights:
 
     def weights_by_timings(self, weights='', frames=0, image=None, default_weights="1.0, 0.0", default_easing="linear", timing_mode="Frame"):
         # Parse the default weights
-        default_weights = self.parse_default_weights(default_weights)
+        default_weights = self.parse_default_weights(default_weights or "1.0, 0.0")
         
         # Initialize weights_list
         weights_list = []
