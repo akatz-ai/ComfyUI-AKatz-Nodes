@@ -71,10 +71,6 @@ class AK_MakeDepthmapSeamless:
             # Replace in batch
             depthmap_np[i] = depthmap_seamless_np
 
-        # Remove batch dimension if input was a single image
-        if depthmap_np.shape[0] == 1:
-            depthmap_np = depthmap_np[0]
-
         # Convert back to PyTorch tensor
         depthmap_seamless = torch.from_numpy(depthmap_np).to(depthmap_batch.device).type_as(depthmap_batch)
 
