@@ -14,8 +14,7 @@ class AK_NormalizeImageColor:
                     "default": 0.2,
                     "min": 0.0,
                     "max": 1.0,
-                    "step": 0.1,
-                    "round": 0.1, #The value representing the precision to round to, will be set to the step value by default. Can be set to False to disable rounding.
+                    "step": 0.001,
                     "display": "number"}),
                 "red": ("INT",{
                     "default": 255,
