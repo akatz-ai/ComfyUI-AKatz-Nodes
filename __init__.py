@@ -35,6 +35,7 @@ from .src.ak_convert_float_list_to_flex_feature import AK_FloatListToFlexFeature
 from .src.ak_adjust_depthmap_brightness import AK_AdjustDepthmapBrightness
 from .src.ak_make_depthmap_seamless import AK_MakeDepthmapSeamless
 from .src.ak_scale_mask import ScaleMaskNode
+from .src.ak_blob_track import AK_BlobTrack
 
 NAME_POSTFIX = " | Akatz"
 
@@ -68,6 +69,7 @@ NODE_CONFIG = {
   "AK_AdjustDepthmapBrightness": {"class": AK_AdjustDepthmapBrightness, "name": "Adjust Depthmap Brightness"},
   "AK_MakeDepthmapSeamless": {"class": AK_MakeDepthmapSeamless, "name": "Make Depthmap Seamless"},
   "AK_ScaleMask": {"class": ScaleMaskNode, "name": "Scale Mask"},
+  "AK_BlobTrack": {"class": AK_BlobTrack, "name": "Blob Track"},
 }
 
 
