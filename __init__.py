@@ -11,8 +11,6 @@ from .src.ak_ipadapter_custom_weights import AK_IPAdapterCustomWeights
 from .src.ak_normalize_image_color import AK_NormalizeImageColor
 from .src.ak_audioreactive_dilation_mask import AK_AudioreactiveDilationMask
 from .src.ak_audioreactive_dynamic_dilation_mask import AK_AudioreactiveDynamicDilationMask
-from .src.ak_convert_audio_to_salt_audio import AK_ConvertAudioToSaltAudio
-from .src.ak_convert_salt_audio_to_audio import AK_ConvertSaltAudioToAudio
 from .src.ak_rescale_float_list import AK_RescaleFloatList
 from .src.ak_list_to_numpy_float_array import AK_ListToNumpyFloatArray
 from .src.ak_lag_chop import AK_LagChop
@@ -44,8 +42,6 @@ NODE_CONFIG = {
   "AK_NormalizeMaskImage": {"class": AK_NormalizeImageColor, "name": "Normalize Image Color"},
   "AK_AudioreactiveDilationMask": {"class": AK_AudioreactiveDilationMask, "name": "Audioreactive Dilate Mask"},
   "AK_AudioreactiveDynamicDilationMask": {"class": AK_AudioreactiveDynamicDilationMask, "name": "Audioreactive Dynamic Dilate Mask"},
-  "AK_ConvertAudioToSaltAudio": {"class": AK_ConvertAudioToSaltAudio, "name": "Convert Audio To Salt Audio"},
-  "AK_ConvertSaltAudioToAudio": {"class": AK_ConvertSaltAudioToAudio, "name": "Convert Salt Audio To Audio"},
   "AK_RescaleFloatList": {"class": AK_RescaleFloatList, "name": "Rescale Float List"},
   "AK_ListToNumpyFloatArray": {"class": AK_ListToNumpyFloatArray, "name": "List To Numpy Float Array"},
   "AK_LagChop": {"class": AK_LagChop, "name": "Lag Chop"},
